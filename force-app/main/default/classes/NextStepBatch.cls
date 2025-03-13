@@ -19,14 +19,14 @@
  * Note: This class contains placeholders and commented sections that need to be updated with actual logic for querying and updating records.
  */
 public with sharing class NextStepBatch implements Database.Batchable<sObject> {
+  final String BATCH_NEXT_STEP = 'Batching the next meetings together.';
+  
   public Database.QueryLocator start(Database.BatchableContext bc) {
     // Query for all accounts and return the query locator.
     return Database.getQueryLocator('SELECT Id, Next_Step__c FROM Account');
   }
 
   public void execute(Database.BatchableContext bc, List<Account> scope) {
-    final String BATCH_NEXT_STEP = 'Batching the next meetings together.';
-
     // Update the Next Step field on each record in the batch scope.
     // Loop through the scope account records
     // Set the Next Step field to 'Batching the next meetings together.'

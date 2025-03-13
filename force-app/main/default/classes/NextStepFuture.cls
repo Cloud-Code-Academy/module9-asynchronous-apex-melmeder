@@ -25,18 +25,22 @@ public with sharing class NextStepFuture {
    * Opportunity Next Step field is a standard field
    * Update the corresponding test class AsynchronousTest and test method nextStepFuture_testUpdateAllNextStep to cover test this method
    */
+
+  final static String MEETING_UPDATE = 'Meeting in the future';
+
   @future
   public static void setMeetingAccountsOpps() {
+
     List<Account> acctsToUpdate = new List<Account>();
     for (Account acc : [SELECT Id, Next_Step__c FROM Account]) {
-      acc.Next_Step__c = 'Meeting in the future';
+      acc.Next_Step__c = MEETING_UPDATE;
       acctsToUpdate.add(acc);
     }
     update acctsToUpdate;
 
     List<Opportunity> oppsToUpdate = new List<Opportunity>();
     for (Opportunity opp : [SELECT Id, NextStep FROM Opportunity]) {
-      opp.NextStep = 'Meeting in the future';
+      opp.NextStep = MEETING_UPDATE;
       oppsToUpdate.add(opp);
     }
     update oppsToUpdate;
